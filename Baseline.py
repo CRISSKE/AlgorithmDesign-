@@ -1,4 +1,7 @@
 # Option:2 Longest Cubic Subsequence
+from itertools import combinations
+
+
 def is_cubic(squence):
     n = len(squence)
 
@@ -13,10 +16,20 @@ def is_cubic(squence):
 
     return first == second == third
 
+def lognest_sub_squares(sequence):
+    n = len(sequence)
+    for length in range(n - n % 3, 0, -3):
+        for i in combinations(range(n), length):
+            solution = "".join(sequence[index] for index in i)
+            if is_cubic(solution):
+                return solution
+    return ""
+
+
 def main():
     sequence = "abcabcabc"
 
     print("intput:", sequence)
     print("output:", is_cubic(sequence))
 
-main()
+main() 
