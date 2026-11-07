@@ -27,9 +27,14 @@ def lognest_sub_squares(sequence):
 
 
 def main():
-    sequence = "abcabcabc"
 
-    print("intput:", sequence)
-    print("output:", is_cubic(sequence))
+
+    sequence = "atcgtatgcatgca"
+
+    result = lognest_sub_squares(sequence)
+
+    print("input:", sequence)
+    print("output:", result)
+    print("length:", len(result))
 
 main() 
