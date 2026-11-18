@@ -2,7 +2,7 @@
 from itertools import combinations
 
 
-def lec_length(A, B, C):
+def lcs_length(A, B, C):
     la  = len(A)
     lb = len(B)
     lc = len(C)
@@ -18,6 +18,20 @@ def lec_length(A, B, C):
                 else:
                     dp[a][b][c] = max(dp[a-1][b][c], dp[a][b-1][c], dp[a][b][c-1])
     return dp[la][lb][lc]
+
+def longest_cubic_subsequence(sequence):
+    n = len(sequence)
+    best = 0
+
+    for i in range(1, n + 1):
+        for j in range(1, n + 1):
+            A = sequence[:i]
+            B = sequence[i:j]
+            C = sequence[j:]
+
+            k = lcs_length(A, B, C)
+            best = max(best, k)
+    return 3*best
 
 
 
