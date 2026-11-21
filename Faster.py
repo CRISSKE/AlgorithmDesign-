@@ -10,7 +10,7 @@ def lcs_length(A, B, C):
     # Initialize prev dp layer
     prev = []
 
-    for b in range(1, lb + 1):
+    for b in range(lb + 1):
         row = [0] * (lc + 1)
         prev.append(row)
 
@@ -18,7 +18,7 @@ def lcs_length(A, B, C):
         # Initialize cur dp layer
         cur = []
 
-        for b in range(1, lb + 1):
+        for b in range(lb + 1):
             row = [0] * (lc + 1)
             cur.append(row)
 
@@ -49,8 +49,7 @@ def longest_cubic_subsequence(sequence):
             if k > best_len:
                 best_len = k
                 best_cut = (i, j)
-    i = best_cut
-    j = best_cut
+    i, j = best_cut
 
     X = lcs_string(sequence[:i], sequence[i:j], sequence[j:])
 
@@ -106,38 +105,12 @@ def lcs_string(A, B, C):
 
 
 
-
-def is_cubic(squence):
-    n = len(squence)
-
-    if n % 3 != 0:
-        return False
-
-    k = n // 3
-
-    first = squence[:k]
-    second = squence[k:2*k]
-    third = squence[2*k:]
-
-    return first == second == third
-
-def lognest_sub_squares(sequence):
-    n = len(sequence)
-    for length in range(n - n % 3, 0, -3):
-        for i in combinations(range(n), length):
-            solution = "".join(sequence[index] for index in i)
-            if is_cubic(solution):
-                return solution
-    return ""
-
-
 def main():
 
 
     sequence = "atcgtatgcatgca"
 
-    result = longest_cubic_subsequence(sequence)
-    best_cut = longest_cubic_subsequence(sequence)
+    result, best_cut = longest_cubic_subsequence(sequence)
 
     print("input:", sequence)
     print("output:", result)
