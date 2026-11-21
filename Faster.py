@@ -21,6 +21,22 @@ def lcs_length(A, B, C):
 
 def longest_cubic_subsequence(sequence):
     n = len(sequence)
+    best_len = 0
+    best_cut = (0, 0)
+    for i in range(n+1):
+        for j in range(i, n+1):
+            A = sequence[:i]
+            B = sequence[i:j]
+            C = sequence[j:]
+
+            k = lcs_length(A, B, C)
+            if k > best_len:
+                best_len = k
+                best_cut = (i, j)
+    return 3 * best_len, best_cut
+
+def longest_cubic_subsequence(sequence):
+    n = len(sequence)
     best = 0
 
     for i in range(1, n + 1):
