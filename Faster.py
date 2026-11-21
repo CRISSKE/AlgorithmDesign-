@@ -7,17 +7,22 @@ def lcs_length(A, B, C):
     lb = len(B)
     lc = len(C)
 
-    dp = [[0] * (lc + 1) for _ in range(la + 1) for _ in range(lb + 1)]
+    prev = [[0] * (lc + 1) for _ in range(la + 1) for _ in range(lb + 1)]
 
-    for a in range(1, la + 1):
-        for b in range(1, lb + 1):
+    for a in range(1, len(A) + 1):
+        cur = [[0] * (lc + 1) for _ in range(lb + 1)]
+        x = A[a-1]
+
+        for b in range(1, lc + 1):
+            y = B[b-1]
+
             for c in range(1, lc + 1):
-
-                if A[a-1] == B[b-1] == C[c-1]:
-                    dp[a][b][c] = (dp[a-1][b-1][c-1] + 1)
+                if x == y == C[c-1]:
+                    cur[b][c] = prev[b-1][c-1] + 1
                 else:
-                    dp[a][b][c] = max(dp[a-1][b][c], dp[a][b-1][c], dp[a][b][c-1])
-    return dp[la][lb][lc]
+                    cur[b][c] = max(prev[b][c],  cur[b-1][c], cur[b][c-1])
+        prev = cur
+    return prev[lb][lc]
 
 def longest_cubic_subsequence(sequence):
     n = len(sequence)
