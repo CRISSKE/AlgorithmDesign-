@@ -3,8 +3,8 @@ import time
 import random
 import statistics
 
-from Baseline import lognest_sub_squares
-from Faster import longest_cubic_subsequence
+from baseline import lognest_sub_squares
+from fasterAlgo import longest_cubic_subsequence
 
 
 # Experimental settings
