@@ -24,11 +24,11 @@ This project implements two algorithms for finding the Longest Cubic Subsequence
 
    **Baseline Algorithm:**
 
-   `python3 Baseline.py`
+   `python3 baseline.py`
 
    **Faster Algorithm:**
 
-   `python3 Faster.py`
+   `python3 fasterAlgo.py`
 
    **Experimental Evaluation:**
 
