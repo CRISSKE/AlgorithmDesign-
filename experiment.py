@@ -13,6 +13,7 @@ TRIALS = 5
 
 
 def measure_time(algorithm, sequence):
+    #measure the execution time of one algorithm run
     start = time.perf_counter()
     result = algorithm(sequence)
     elapsed = time.perf_counter() - start
